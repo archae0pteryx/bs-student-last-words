@@ -1,9 +1,11 @@
 import { FC } from 'react'
-import { StudentIntro } from '../models/StudentIntro'
+import { LastWordsModel } from '../models/StudenLastWords'
 import { useState } from 'react'
 import { Box, Button, FormControl, FormLabel, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Textarea } from '@chakra-ui/react'
 import * as web3 from '@solana/web3.js'
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
+
+
 
 const STUDENT_INTRO_PROGRAM_ID = 'HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf'
 
@@ -16,11 +18,11 @@ export const Form: FC = () => {
 
     const handleSubmit = (event: any) => {
         event.preventDefault()
-        const studentIntro = new StudentIntro(name, message)
+        const studentIntro = new LastWordsModel(name, message)
         handleTransactionSubmit(studentIntro)
     }
 
-    const handleTransactionSubmit = async (studentIntro: StudentIntro) => {
+    const handleTransactionSubmit = async (studentIntro: LastWordsModel) => {
         if (!publicKey) {
             alert('Please connect your wallet!')
             return
@@ -82,8 +84,8 @@ export const Form: FC = () => {
                     <FormLabel color='gray.200'>
                         What do we call you?
                     </FormLabel>
-                    <Input 
-                    id='name' 
+                    <Input
+                    id='name'
                     color='gray.400'
                     onChange={event => setName(event.currentTarget.value)}
                 />
@@ -92,8 +94,8 @@ export const Form: FC = () => {
                     <FormLabel color='gray.200'>
                         What brings you to Solana, friend?
                     </FormLabel>
-                    <Textarea 
-                        id='message' 
+                    <Textarea
+                        id='message'
                         color='gray.400'
                         onChange={event => setMessage(event.currentTarget.value)}
                     />

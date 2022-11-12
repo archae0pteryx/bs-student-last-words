@@ -1,10 +1,10 @@
 import bs58 from 'bs58'
 import * as web3 from '@solana/web3.js'
-import { StudentIntro } from '../models/StudentIntro'
+import { LastWordsModel } from '../models/StudenLastWords'
 
-const STUDENT_INTRO_PROGRAM_ID = 'HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf'
+const STUDENT_INTRO_PROGRAM_ID = 'EGLjJCbRkdvcHq65ycNmjkWEsqLuPCSWEPkRZ5VPC7j5'
 
-export class StudentIntroCoordinator {
+export class LastWordsCoordinator {
     static accounts: web3.PublicKey[] = []
 
 
@@ -14,10 +14,10 @@ export class StudentIntroCoordinator {
             {
                 dataSlice: { offset: 1, length: 12 },
                 filters: search === '' ? [] : [
-                    { 
-                        memcmp: 
-                            { 
-                                offset: 5, 
+                    {
+                        memcmp:
+                            {
+                                offset: 5,
                                 bytes: bs58.encode(Buffer.from(search))
                             }
                     }
@@ -36,7 +36,7 @@ export class StudentIntroCoordinator {
         this.accounts = accounts.map(account => account.pubkey)
     }
 
-    static async fetchPage(connection: web3.Connection, page: number, perPage: number, search: string, reload: boolean = false): Promise<StudentIntro[]> {
+    static async fetchPage(connection: web3.Connection, page: number, perPage: number, search: string, reload: boolean = false): Promise<LastWordsModel[]> {
         if (this.accounts.length === 0 || reload) {
             await this.prefetchAccounts(connection, search)
         }
@@ -52,8 +52,8 @@ export class StudentIntroCoordinator {
 
         const accounts = await connection.getMultipleAccountsInfo(paginatedPublicKeys)
 
-        const movies = accounts.reduce((accum: StudentIntro[], account) => {
-            const movie = StudentIntro.deserialize(account?.data)
+        const movies = accounts.reduce((accum: LastWordsModel[], account) => {
+            const movie = LastWordsModel.deserialize(account?.data)
             if (!movie) {
                 return accum
             }
