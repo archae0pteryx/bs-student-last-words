@@ -11,13 +11,13 @@ const Home: NextPage = () => {
   return (
     <div className={styles.App}>
       <Head>
-        <title>What are your last words, Student?</title>
+        <title>You will die</title>
       </Head>
       <AppBar />
       <Center>
         <Box>
           <Heading as="h1" size="l" color="white" ml={4} mt={8}>
-            Choose wisely. These are the last you will have
+            You are about to die
           </Heading>
           <Form />
           <Heading as="h1" size="l" color="white" ml={4} mt={8}>

@@ -1,6 +1,6 @@
 import { Card } from './Card'
 import { FC, useEffect, useState } from 'react'
-import { LastWordsModel } from '../models/StudenLastWords'
+import { LastWordsModel } from '../models/LastWords'
 import * as web3 from '@solana/web3.js'
 import { Button, Center, HStack, Input, Spacer } from '@chakra-ui/react'
 import { LastWordsCoordinator } from '../coordinators/LastWordsCoordinator'

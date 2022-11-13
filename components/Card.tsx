@@ -1,6 +1,6 @@
 import { Box, HStack, Spacer, Stack, Text } from '@chakra-ui/react';
 import { FC } from 'react';
-import { LastWordsModel } from '../models/StudenLastWords';
+import { LastWordsModel } from '../models/LastWords';
 
 export interface CardProps {
     studentIntro: LastWordsModel;

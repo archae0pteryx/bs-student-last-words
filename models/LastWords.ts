@@ -10,9 +10,9 @@ export class LastWordsModel {
     }
 
     static mocks: LastWordsModel[] = [
-        new LastWordsModel('Elizabeth Holmes', `Learning Solana so I can use it to build sick NFT projects.`),
-        new LastWordsModel('Jack Nicholson', `I want to overhaul the world's financial system. Lower friction payments/transfer, lower fees, faster payouts, better collateralization for loans, etc.`),
-        new LastWordsModel('Terminator', `i'm basically here to protect`),
+        new LastWordsModel('Jo blow', `I like toast`),
+        new LastWordsModel('Jack fact', `Bees and dogs can smell fear`),
+        new LastWordsModel('Waffle crisp', `syrup is the best`),
     ]
 
     borshInstructionSchema = borsh.struct([

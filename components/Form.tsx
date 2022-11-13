@@ -1,13 +1,11 @@
 import { FC } from 'react'
-import { LastWordsModel } from '../models/StudenLastWords'
+import { LastWordsModel } from '../models/LastWords'
 import { useState } from 'react'
 import { Box, Button, FormControl, FormLabel, Input, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Textarea } from '@chakra-ui/react'
 import * as web3 from '@solana/web3.js'
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 
-
-
-const STUDENT_INTRO_PROGRAM_ID = 'HdE95RSVsdb315jfJtaykXhXY478h53X6okDupVfY9yf'
+const LAST_WORDS_PID = 'EGLjJCbRkdvcHq65ycNmjkWEsqLuPCSWEPkRZ5VPC7j5'
 
 export const Form: FC = () => {
     const [name, setName] = useState('')
@@ -33,7 +31,7 @@ export const Form: FC = () => {
 
         const [pda] = await web3.PublicKey.findProgramAddress(
             [publicKey.toBuffer()],
-            new web3.PublicKey(STUDENT_INTRO_PROGRAM_ID)
+            new web3.PublicKey(LAST_WORDS_PID)
         )
 
         const instruction = new web3.TransactionInstruction({
@@ -55,7 +53,7 @@ export const Form: FC = () => {
                 }
             ],
             data: buffer,
-            programId: new web3.PublicKey(STUDENT_INTRO_PROGRAM_ID)
+            programId: new web3.PublicKey(LAST_WORDS_PID)
         })
 
         transaction.add(instruction)
@@ -82,7 +80,7 @@ export const Form: FC = () => {
             <form onSubmit={handleSubmit}>
                 <FormControl isRequired>
                     <FormLabel color='gray.200'>
-                        What do we call you?
+                        What should your tombstone username be?
                     </FormLabel>
                     <Input
                     id='name'
@@ -92,7 +90,7 @@ export const Form: FC = () => {
                 </FormControl>
                 <FormControl isRequired>
                     <FormLabel color='gray.200'>
-                        What brings you to Solana, friend?
+                        What do you want to say for yourself?
                     </FormLabel>
                     <Textarea
                         id='message'

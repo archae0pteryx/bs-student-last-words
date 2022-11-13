@@ -1,8 +1,8 @@
 import bs58 from 'bs58'
 import * as web3 from '@solana/web3.js'
-import { LastWordsModel } from '../models/StudenLastWords'
+import { LastWordsModel } from '../models/LastWords'
 
-const STUDENT_INTRO_PROGRAM_ID = 'EGLjJCbRkdvcHq65ycNmjkWEsqLuPCSWEPkRZ5VPC7j5'
+const LAST_WORDS_PID = 'EGLjJCbRkdvcHq65ycNmjkWEsqLuPCSWEPkRZ5VPC7j5'
 
 export class LastWordsCoordinator {
     static accounts: web3.PublicKey[] = []
@@ -10,7 +10,7 @@ export class LastWordsCoordinator {
 
     static async prefetchAccounts(connection: web3.Connection, search: string) {
         const accounts = await connection.getProgramAccounts(
-            new web3.PublicKey(STUDENT_INTRO_PROGRAM_ID),
+            new web3.PublicKey(LAST_WORDS_PID),
             {
                 dataSlice: { offset: 1, length: 12 },
                 filters: search === '' ? [] : [
